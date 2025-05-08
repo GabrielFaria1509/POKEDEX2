@@ -1,44 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+const pokemonName = document.querySelector('.pokemon_name');
+const pokemonNumber = document.querySelector('.pokemon_number');
 
+const pokemonImage = document.querySelector('.pokemon_image');
+const form = document.querySelector('.form')
+const input = document.querySelector('.input_search');
 
-     <!-- Links -->
-    <link rel="icon" href="./favicons/favicon-16x16.png">
-    <link rel="stylesheet" href="./css/style.css">
+const buttonPrev = document.querySelector('.btn-prev');
+const buttonNext = document.querySelector('.btn-next');
 
-    <!-- Main JS -->
-     <script defer src = "./js/script.js"></script>
+const fetchPokemon = async (pokemon) => {
     
-    <title>Pokedex</title>
-</head>
-<body>
-    <main>
-        <img src = "#
-        " alt = "pokemon" class = "pokemon_image">
+    const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`);
 
-        <h1 class = "pokemon_data">
-            <span class = "pokemon_number"></span>-
-            <span class = "pokemon_name"></span>
-        </h1>
-        <form class="form">
-            <input 
-            type="search"
-            class="input_search"
-            placeholder="Name or Number"
-            required
+    if(APIResponse.status === 200){
+        const data = await APIResponse.json();
+        return data;
+    }    
+    return data;
+}
 
-            />
-        </form>
-        <div class="buttons">
-            <button class="button btn-prev">Prev &lt;</button>
-            <button class="button btn-next">Next &gt;</button>
-        </div>
+const renderPokemon = async  (pokemon) => {
+
+    pokemonName.innerHTML = 'Loading...';
+    pokemonNumber.innerHTML = '';
+    
+    const data = await fetchPokemon(pokemon);
+
+    if(data){
+       pokemonName.innerHTML = data.name;
+       pokemonNumber.innerHTML = data.id;
+       pokemonImage.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
+
+       input.value = '';
+
+    }else{
+        pokemonName.innerHTML = 'Not Found :c';
+        pokemonNumber.innerHTML = '';
         
-        <img src = "./images/pokedex.png" alt = "pokedex" class="pokedex">
-    </main>
+    }
+}
 
-</body>
-</html>
+form.addEventListener('submit', (event) => {
+    
+    event.preventDefault();
+
+    renderPokemon(input.value);
+});
+
+buttonPrev.addEventListener('click', () => {
+    alert('prev button clicked');
+});
+
+buttonNext.addEventListener('click', () => {
+    alert('next button clicked');
+});
+
+renderPokemon('1'); // Load the first Pokemon by default
+
