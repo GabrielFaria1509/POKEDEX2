@@ -32,7 +32,8 @@ const renderPokemon = async  (pokemon) => {
        pokemonImage.style.display = 'block';
        pokemonName.innerHTML = data.name;
        pokemonNumber.innerHTML = data.id;
-       pokemonImage.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
+       pokemonImage.src = `https://play.pokemonshowdown.com/sprites/ani/${data.name.toLowerCase()}.gif`;
+
        
         input.value = '';
 
