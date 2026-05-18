@@ -28,9 +28,8 @@ Este projeto foi desenvolvido como parte dos meus estudos práticos de front-end
 O projeto mantém uma arquitetura simples e organizada para o ambiente de desenvolvimento:
 
 ```text
-├── css/
-│   └── style.css      # Toda a estilização e responsividade do app
-├── js/
-│   └── script.js     # Lógica de consumo da PokeAPI e manipulação do DOM
-├── index.html        # Estrutura principal da interface gráfica
-└── README.md         # Documentação do repositório
+
+style.css      # Toda a estilização e responsividade do app
+script.js     # Lógica de consumo da PokeAPI e manipulação do DOM
+index.html        # Estrutura principal da interface gráfica
+README.md         # Documentação do repositório
