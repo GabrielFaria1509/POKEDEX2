@@ -1,3 +1,7 @@
+<img width="500" height="300" alt="gif_poke" src="https://github.com/user-attachments/assets/182d584f-e1be-4ab1-ba99-4c7a9129fdcf" />
+
+
+
 # 🗺️ Pokédex App
 
 Uma aplicação web interativa e responsiva que replica o funcionamento de uma Pokédex clássica. O projeto consome dados dinâmicos diretamente da **PokeAPI** para listar, buscar e exibir informações dos Pokémon em tempo real.
